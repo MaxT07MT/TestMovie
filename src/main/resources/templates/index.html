@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      background-color: #223344;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .pop-up {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      font-weight: bold;
+      color: #00ff00;
+      text-shadow: 0 0 20px #00ff00;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+    }
+
+    .buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .buttons a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #00ff00;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #00cc00;
+    }
+
+    /* Стили для мерцающих звезд */
+    .star {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background-color: #fff;
+      animation: blink 3s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="pop-up">ВИДЕОПРОКАТ</div>
+
+<div class="buttons">
+  <a href="/movies">movies</a>
+  <a href="/customers">customers</a>
+</div>
+
+<script>
+  // Создание мерцающих звезд
+  for (let i = 0; i < 20; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
+    document.body.appendChild(star);
+  }
+</script>
+</body>
+</html>

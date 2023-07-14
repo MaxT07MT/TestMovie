@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Customer</title>
+  <style>
+    body {
+      background-color: #223344;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      color: #00ff00;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 200px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #00ff00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #00cc00;
+    }
+
+    .animation {
+      animation-name: slideIn;
+      animation-duration: 1s;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+<h2 class="animation">Edit Customer</h2>
+<form th:action="@{/customers/edit/{id}(id=${customer.id})}" method="post" class="animation">
+  <input type="hidden" id="id" name="id" th:value="${customer.id}">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" th:value="${customer.name}">
+  <br>
+  <label for="phone">Phone:</label>
+  <input type="text" id="phone" name="phone" th:value="${customer.phone}">
+  <br>
+  <input type="submit" value="Update">
+</form>
+
+<form th:action="@{/customers/addToOrder/{customerId}(customerId=${customer.id})}" method="post"
+      class="animation">
+  <input type="hidden" name="customerId" th:value="${customer.id}">
+  <select name="movieId">
+    <option th:each="movie : ${movies}" th:value="${movie.id}" th:text="${movie.title}"></option>
+  </select>
+  <input type="submit" value="Add to Order">
+</form>
+
+<!-- Удаление фильма из заказа -->
+<form th:action="@{/customers/removeFromOrder/{customerId}(customerId=${customer.id})}" method="post"
+      class="animation">
+  <input type="hidden" name="customerId" th:value="${customer.id}">
+  <select name="movieId">
+    <option th:each="orderR : ${customer.getOrderRS}" th:value="${orderR.movie.getId()}"
+            th:text="${orderR.movie.title}"></option>
+  </select>
+  <input type="submit" value="Remove from Order">
+</form>
+
+<button onclick="location.href='/main'" class="animation">Back to Main</button>
+</body>
+</html>

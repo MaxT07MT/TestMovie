@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Customer</title>
+  <style>
+    body {
+      background-color: #223344;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      color: #00ff00;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #fff;
+    }
+
+    th {
+      background-color: #00ff00;
+      color: #fff;
+    }
+
+    td {
+      background-color: #334455;
+    }
+
+    input[type="text"] {
+      width: 210px;
+      height: 30px;
+    }
+
+    input[type="submit"], button {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-right: 5px;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover, button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+<h2>Add Customer</h2>
+<form action="/customers/add" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  <br>
+  <label for="phone">Phone:</label>
+  <input type="text" id="phone" name="phone" required>
+  <br>
+  <input type="submit" value="Add">
+</form>
+<button onclick="window.location.href='/main'" style="margin-top: 20px;">Back to Main</button>
+</body>
+</html>

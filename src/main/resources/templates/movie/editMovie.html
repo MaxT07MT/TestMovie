@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Movie</title>
+  <style>
+    body {
+      background-color: #223344;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      color: #00ff00;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 200px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #00ff00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-radius: 5px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #00cc00;
+    }
+
+    .animation {
+      animation-name: slideIn;
+      animation-duration: 1s;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .back-btn {
+      background-color: #00ff00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-radius: 5px;
+    }
+
+    .back-btn:hover {
+      background-color: #00cc00;
+    }
+  </style>
+</head>
+<body>
+<h2 class="animation">Edit Movie</h2>
+<form th:action="@{/movies/update/{id}(id=${movie.id})}" method="post" class="animation">
+  <input type="hidden" id="id" name="id" th:value="${movie.id}">
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" th:value="${movie.title}" required>
+  <br>
+  <label for="country">Country:</label>
+  <input type="text" id="country" name="country" th:value="${movie.country}" required>
+  <br>
+  <label for="director">Director:</label>
+  <input type="text" id="director" name="director" th:value="${movie.director}" required>
+  <br>
+  <label for="description">Description:</label>
+  <input type="text" id="description" name="description" th:value="${movie.description}" required>
+  <br>
+  <label for="movieType">Movie Type:</label>
+  <select id="movieType" name="movieType" required>
+    <option value="REGULAR" th:selected="${movie.movieType == 'REGULAR'}">Regular</option>
+    <option value="CHILDREN" th:selected="${movie.movieType == 'CHILDREN'}">Children</option>
+    <option value="NEW_RELEASE" th:selected="${movie.movieType == 'NEW_RELEASE'}">New Release</option>
+  </select>
+  <br>
+  <input type="submit" value="Update">
+</form>
+<p></p>
+<button onclick="location.href='/'" class="back-btn">Back to Main</button>
+</body>
+</html>

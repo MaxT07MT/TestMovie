@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Customer Details</title>
+  <style>
+    body {
+      background-color: #223344;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      color: #00ff00;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #fff;
+    }
+
+    th {
+      background-color: #00ff00;
+      color: #fff;
+    }
+
+    td {
+      background-color: #334455;
+    }
+
+    a, button {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-right: 5px;
+      background-color: #00ff00;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    a:hover, button:hover {
+      background-color: #00cc00;
+    }
+
+    .description-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      color: #fff;
+      border-radius: 5px;
+      z-index: 9999;
+      display: none;
+    }
+
+    .description-popup.active {
+      display: block;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1>Customer Details</h1>
+<h2>Customer Information:</h2>
+<p><strong>ID:</strong> <span th:text="${customer.id}"></span></p>
+<p><strong>Name:</strong> <span th:text="${customer.name}"></span></p>
+<p><strong>Phone:</strong> <span th:text="${customer.phone}"></span></p>
+
+<h2>Actions:</h2>
+<a th:href="@{/customers/edit/{id}(id=${customer.id})}"><button>Edit</button></a>
+<p>
+
+</p>
+<a th:href="@{/customers/delete/{id}(id=${customer.id})}"><button>Delete</button></a>
+<br/>
+<p>
+
+</p>
+<a th:href="@{/customers/info/{id}/orderR/add(id=${customer.id})}"><button>Add Order</button></a>
+<br/>
+<p>
+
+</p>
+<a th:href="@{/customers/info/{id}/orderR(id=${customer.id})}"><button>Order</button></a>
+<br/>
+<p>
+  
+</p>
+<a th:href="@{/customers}"><button>Back to Customers</button></a>
+<br/>
+<button onclick="window.location.href='/main'">Back to Main</button>
+</body>
+</html>

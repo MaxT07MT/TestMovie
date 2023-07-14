@@ -1,0 +1,10 @@
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/math_test
+    username: root
+    password: r07022012

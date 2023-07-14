@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Search Customers</title>
+  <style>
+    body {
+      background-color: #001f3f;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      color: #00ff00;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"] {
+      width: 210px;
+      height: 30px;
+    }
+
+    input[type="submit"] {
+      background-color: #39cccc;
+      color: #001f3f;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #2aa7b0;
+    }
+  </style>
+</head>
+<body>
+<h2>Search Customers</h2>
+<form th:action="@{/customers/filter}" method="get">
+  <label for="keyword">Keyword:</label>
+  <input type="text" id="keyword" name="keyword" required>
+  <input type="submit" value="Search" style="background-color: #00ff00; color: #fff; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">
+
+</form>
+</body>
+</html>
+
